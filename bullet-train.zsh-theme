@@ -246,6 +246,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 context() {
   local user="$(whoami)"
+  [[ "$user" == "$BULLETTRAIN_CONTEXT_DEFAULT_USER" ]] && echo -n "$(hostname)"
   [[ "$user" != "$BULLETTRAIN_CONTEXT_DEFAULT_USER" || -n "$BULLETTRAIN_IS_SSH_CLIENT" ]] && echo -n "${user}@%m"
 }
 prompt_context() {
